@@ -1,0 +1,743 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Agriculture AI Agent</title>
+
+    <!-- Google Font -->
+
+    <link rel="preconnect"
+          href="https://fonts.googleapis.com">
+
+    <link rel="preconnect"
+          href="https://fonts.gstatic.com"
+          crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+          rel="stylesheet">
+
+    <!-- Font Awesome -->
+
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+    <!-- CSS -->
+
+    <link rel="stylesheet"
+          href="style.css">
+
+</head>
+
+<body>
+
+    <!--==============================
+        Background Animation
+    ===============================-->
+
+    <div class="background">
+        <span></span>
+        <span></span>
+        <span></span>
+    </div>
+
+    <!--==============================
+        Navigation Bar
+    ===============================-->
+
+    <header class="navbar">
+
+        <div class="nav-left">
+
+            <button id="menuBtn"
+                    class="icon-btn">
+
+                <i class="fas fa-bars"></i>
+
+            </button>
+
+            <div class="logo" data-i18n="nav.logo">
+
+                🌾 Agriculture AI
+
+            </div>
+
+        </div>
+
+        <div class="nav-right">
+
+            <button id="themeBtn"
+                    class="icon-btn">
+
+                <i class="fas fa-moon"></i>
+
+            </button>
+
+            <button class="icon-btn">
+
+                <i class="fas fa-bell"></i>
+
+            </button>
+
+            <button class="profile-btn" id="profileTrigger" type="button" aria-label="Account">
+
+                <i class="fas fa-user"></i>
+
+            </button>
+
+        </div>
+
+    </header>
+
+    <!--==============================
+        Dashboard Layout
+    ===============================-->
+
+    <div class="dashboard">
+
+        <button class="assistant-float" id="assistantFloatBtn" aria-label="Assistant help">
+
+            <i class="fas fa-robot"></i>
+
+            <span>Assist</span>
+
+        </button>
+
+        <!--==============================
+            Sidebar
+        ===============================-->
+
+        <aside class="sidebar"
+               id="sidebar">
+
+            <button class="new-analysis" id="newAnalysisBtn">
+
+                <i class="fas fa-plus"></i>
+
+                <span data-i18n="sidebar.newAnalysis">New Analysis</span>
+
+            </button>
+
+            <div class="sidebar-card">
+
+                <div class="sidebar-card-head">
+
+                    <i class="fas fa-tractor"></i>
+
+                    <div>
+
+                        <strong>Farm Overview</strong>
+
+                        <span>Live insights</span>
+
+                    </div>
+
+                </div>
+
+                <p data-i18n="sidebar.cardText">Monitor crops, soil, weather, and recommendations in one place.</p>
+
+            </div>
+
+            <div class="menu">
+
+                <h4 data-i18n="sidebar.workspace">Workspace</h4>
+
+                <a href="#" class="menu-item active" data-target="dashboardSection" data-action="dashboard">
+
+                    <i class="fas fa-home"></i>
+
+                    <span class="menu-text" data-i18n="sidebar.dashboard">Dashboard</span>
+
+                </a>
+
+                <a href="#" class="menu-item" data-target="heroSection" data-action="upload">
+
+                    <i class="fas fa-image"></i>
+
+                    <span class="menu-text" data-i18n="sidebar.uploadImage">Upload Image</span>
+
+                </a>
+
+                <a href="#" class="menu-item" data-target="recommendationSection" data-action="recommendation">
+
+                    <i class="fas fa-seedling"></i>
+
+                    <span class="menu-text" data-i18n="sidebar.cropRecommendation">Crop Recommendation</span>
+
+                </a>
+
+                <a href="#" class="menu-item" data-target="recommendationSection" data-action="disease">
+
+                    <i class="fas fa-leaf"></i>
+
+                    <span class="menu-text" data-i18n="sidebar.diseaseDetection">Disease Detection</span>
+
+                </a>
+
+                <a href="#" class="menu-item" data-target="chatSection" data-action="history">
+
+                    <i class="fas fa-history"></i>
+
+                    <span class="menu-text" data-i18n="sidebar.history">History</span>
+
+                </a>
+
+            </div>
+
+            <div class="menu">
+
+                <h4 data-i18n="sidebar.services">Services</h4>
+
+                <a href="#" class="menu-item" data-target="heroSection" data-action="weather">
+
+                    <i class="fas fa-cloud-sun"></i>
+
+                    <span class="menu-text" data-i18n="sidebar.weather">Weather</span>
+
+                </a>
+
+                <a href="#" class="menu-item" data-target="chatSection" data-action="market">
+
+                    <i class="fas fa-chart-line"></i>
+
+                    <span class="menu-text" data-i18n="sidebar.marketPrices">Market Prices</span>
+
+                </a>
+
+                <a href="#" class="menu-item" data-target="heroSection" data-action="settings">
+
+                    <i class="fas fa-cog"></i>
+
+                    <span class="menu-text" data-i18n="sidebar.settings">Settings</span>
+
+                </a>
+
+            </div>
+
+        </aside>
+
+        <!--==============================
+            Main Content
+        ===============================-->
+
+        <main class="main-content">
+
+            <!-- Welcome Card -->
+
+            <section class="hero" id="heroSection">
+
+                <div class="hero-copy">
+
+                    <div class="hero-badge" data-i18n="hero.badge">
+
+                        <i class="fas fa-sparkles"></i>
+
+                        Smart farm insights in seconds
+
+                    </div>
+
+                    <h1 data-i18n="hero.title">
+
+                        👋 Welcome to Agriculture AI Agent
+
+                    </h1>
+
+                    <p data-i18n="hero.description">
+
+                        Upload any agriculture-related image and let AI identify,
+                        analyze, and recommend the best solution.
+
+                    </p>
+
+                    <div class="hero-actions">
+
+                        <button class="upload-btn" id="heroUploadBtn">
+
+                            <i class="fas fa-camera"></i>
+
+                            <span data-i18n="hero.uploadButton">Upload image</span>
+
+                        </button>
+
+                        <button class="secondary-btn" id="insightBtn">
+
+                            <i class="fas fa-lightbulb"></i>
+
+                            <span data-i18n="hero.insightButton">Quick insights</span>
+
+                        </button>
+
+                    </div>
+
+                </div>
+
+                <div class="hero-highlights">
+
+                    <div class="metric-card">
+
+                        <i class="fas fa-seedling"></i>
+
+                        <strong data-i18n="hero.metricCropTitle">Crop health</strong>
+
+                        <span data-i18n="hero.metricCropText">Instant scoring</span>
+
+                    </div>
+
+                    <div class="metric-card">
+
+                        <i class="fas fa-cloud-sun"></i>
+
+                        <strong data-i18n="hero.metricWeatherTitle">Weather-aware</strong>
+
+                        <span data-i18n="hero.metricWeatherText">Contextual advice</span>
+
+                    </div>
+
+                    <div class="metric-card">
+
+                        <i class="fas fa-chart-line"></i>
+
+                        <strong data-i18n="hero.metricActionTitle">Actionable</strong>
+
+                        <span data-i18n="hero.metricActionText">Fertilizer & irrigation</span>
+
+                    </div>
+
+                </div>
+
+            </section>
+                        <!--=========================================
+                    Upload Agriculture Image
+            ==========================================-->
+
+                        <!--=========================================
+                    AI Recommendations
+            ==========================================-->
+
+            <section class="recommendation-section" id="recommendationSection">
+
+                <div class="recommend-card">
+
+                    <div class="card-title">
+
+                        <h2 data-i18n="recommendation.title">
+
+                            🌱 AI Recommendations
+
+                        </h2>
+
+                        <p data-i18n="recommendation.description">
+
+                            Personalized recommendations based on the uploaded image.
+
+                        </p>
+
+                    </div>
+
+                    <div class="recommendation-list" id="recommendationList">
+
+                        <div class="recommend-item">
+
+                            <i class="fas fa-seedling"></i>
+
+                            <div>
+
+                                <h4>
+
+                                    Upload an image to receive recommendations
+
+                                </h4>
+
+                                <p>
+
+                                    Crop suggestions, disease treatments, fertilizer advice, and more will appear here.
+
+                                </p>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!--=========================================
+                    AI Chat
+            ==========================================-->
+
+            <section class="chat-section" id="chatSection">
+
+                <div class="chat-card">
+
+                    <div class="card-title">
+
+                        <h2 data-i18n="chat.title">
+
+                            💬 Agriculture AI Assistant
+
+                        </h2>
+
+                    </div>
+
+                    <div
+                        class="chat-messages"
+                        id="chatMessages">
+
+                        <div class="bot-message">
+
+                            <span data-i18n="chat.greeting">👋 Hello! I'm your Agriculture AI Assistant.</span>
+
+                            <br><br>
+
+                            <span data-i18n="chat.askAnything">Ask me anything about:</span>
+
+                            <ul>
+
+                                <li data-i18n="chat.crops">🌱 Crops</li>
+
+                                <li data-i18n="chat.soil">🪨 Soil</li>
+
+                                <li data-i18n="chat.diseases">🍃 Plant Diseases</li>
+
+                                <li data-i18n="chat.pests">🐛 Pests</li>
+
+                                <li data-i18n="chat.irrigation">💧 Irrigation</li>
+
+                                <li data-i18n="chat.weather">🌦 Weather</li>
+
+                            </ul>
+
+                        </div>
+
+                    </div>
+
+                    <div class="chat-input">
+
+                        <input
+                            type="text"
+                            id="userInput"
+                            placeholder="Ask anything about agriculture..." data-i18n-placeholder="chat.placeholder">
+
+                        <button class="voice-btn" id="voiceBtn" type="button" title="Voice input">
+
+                            <i class="fas fa-microphone"></i>
+
+                        </button>
+
+                        <button
+                            id="sendBtn"
+                            type="button">
+
+                            <i class="fas fa-paper-plane"></i>
+
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+        </main>
+
+
+    </div>
+
+
+
+    <div class="settings-modal" id="settingsModal" aria-hidden="true">
+
+        <div class="settings-modal-card">
+
+            <div class="settings-modal-header">
+
+                <div>
+
+                    <strong data-i18n="settings.title">Settings</strong>
+
+                    <p data-i18n="settings.description">Choose your preferred language for the dashboard.</p>
+
+                </div>
+
+                <button class="assistant-close" id="settingsCloseBtn" type="button" aria-label="Close settings">
+
+                    <i class="fas fa-times"></i>
+
+                </button>
+
+            </div>
+
+            <div class="settings-modal-body">
+
+                <div class="settings-hero">
+
+                    <i class="fas fa-globe"></i>
+
+                    <span data-i18n="settings.languageLabel">Preferred language</span>
+
+                </div>
+
+                <label class="settings-field">
+
+                    <span data-i18n="settings.languageLabel">Preferred language</span>
+
+                    <select id="settingsLanguageSelect" class="lang-select">
+
+                        <option value="en">English</option>
+
+                        <option value="te">తెలుగు</option>
+
+                    </select>
+
+                </label>
+
+                <div class="settings-actions">
+
+                    <button type="button" class="upload-btn" id="saveSettingsBtn">
+
+                        <i class="fas fa-save"></i>
+
+                        <span data-i18n="settings.saveButton">Confirm language</span>
+
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="account-modal" id="accountModal" aria-hidden="true">
+
+        <div class="account-modal-card">
+
+            <div class="account-modal-header">
+
+                <div>
+
+                    <strong data-i18n="account.title">Account</strong>
+
+                    <p data-i18n="account.subtitle">Sign in or create an account</p>
+
+                </div>
+
+                <button class="assistant-close" id="accountCloseBtn" type="button" aria-label="Close account">
+
+                    <i class="fas fa-times"></i>
+
+                </button>
+
+            </div>
+
+            <div class="account-tabs">
+
+                <button class="account-tab-btn active" type="button" data-mode="login" data-i18n="account.loginTab">Login</button>
+
+                <button class="account-tab-btn" type="button" data-mode="register" data-i18n="account.registerTab">Register</button>
+
+            </div>
+
+            <div class="account-modal-body">
+
+                <form class="settings-form" id="profileForm">
+
+                    <div class="settings-grid">
+
+                        <label class="settings-field" id="accountNameField" style="display:none;">
+
+                            <span data-i18n="account.nameLabel">Full name</span>
+
+                            <input type="text" id="profileName" placeholder="Asha Rao" data-i18n-placeholder="settings.namePlaceholder">
+
+                        </label>
+
+                        <label class="settings-field">
+
+                            <span data-i18n="account.emailLabel">Email</span>
+
+                            <input type="email" id="profileEmail" placeholder="asha@example.com" data-i18n-placeholder="settings.emailPlaceholder">
+
+                        </label>
+
+                        <label class="settings-field">
+
+                            <span data-i18n="account.passwordLabel">Password</span>
+
+                            <input type="password" id="accountPassword" placeholder="Enter password">
+
+                        </label>
+
+                    </div>
+
+                    <div class="settings-actions">
+
+                        <button type="submit" class="upload-btn" id="saveProfileBtn">
+
+                            <i class="fas fa-save"></i>
+
+                            <span data-i18n="account.submitLogin">Sign in</span>
+
+                        </button>
+
+                    </div>
+
+                </form>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <input type="file" id="imageInput" accept="image/*" hidden>
+
+    <div class="toast" id="toast"></div>
+
+    <div class="assistant-panel" id="assistantPanel" aria-hidden="true">
+
+        <div class="assistant-panel-header">
+
+            <div>
+
+                <strong data-i18n="assistant.title">Farm Assistant</strong>
+
+                <p data-i18n="assistant.subtitle">Guidance for customers</p>
+
+            </div>
+
+            <button class="assistant-close" id="assistantCloseBtn" type="button" aria-label="Close assistant">
+
+                <i class="fas fa-times"></i>
+
+            </button>
+
+        </div>
+
+        <div class="assistant-panel-body" id="assistantPanelBody">
+
+            <div class="assistant-bubble">
+
+                <span data-i18n="assistant.greeting">Hello! I can guide you through uploads, recommendations, weather insights, and how to assess the app experience.</span>
+
+            </div>
+
+        </div>
+
+        <div class="assistant-quick-actions">
+
+            <button class="assistant-chip" data-action="upload" data-i18n="assistant.chipUpload">Upload image</button>
+            <button class="assistant-chip" data-action="recommendation" data-i18n="assistant.chipRecommendations">Recommendations</button>
+            <button class="assistant-chip" data-action="web" data-i18n="assistant.chipAssess">Assess the web</button>
+
+        </div>
+
+        <div class="assistant-input-row">
+
+            <input type="text" id="assistantInput" placeholder="Ask the assistant..." data-i18n-placeholder="assistant.placeholder">
+
+            <button id="assistantSendBtn" type="button">
+
+                <i class="fas fa-paper-plane"></i>
+
+            </button>
+
+        </div>
+
+    </div>
+
+    <!-- JavaScript -->
+
+    <script src="script.js"></script>
+
+    <!--=========================================
+                Footer
+==========================================-->
+
+<footer class="footer">
+
+    <div class="footer-container">
+
+        <div class="footer-column">
+
+            <h3>🌾 Agriculture AI Agent</h3>
+
+            <p>
+
+                Empowering smart farming using Artificial Intelligence,
+                image analysis, and intelligent recommendations.
+
+            </p>
+
+        </div>
+
+        <div class="footer-column">
+
+            <h3>📞 Contact</h3>
+
+            <p>
+
+                <i class="fas fa-envelope"></i>
+
+                agri.ai@example.com
+
+            </p>
+
+            <p>
+
+                <i class="fas fa-phone"></i>
+
+                +91 98765 43210
+
+            </p>
+
+            <p>
+
+                <i class="fas fa-map-marker-alt"></i>
+
+                Tirupati, Andhra Pradesh, India
+
+            </p>
+
+        </div>
+
+        <div class="footer-column">
+
+            <h3>🔗 Quick Links</h3>
+
+            <a href="#">Dashboard</a>
+
+            <a href="#">Upload Image</a>
+
+            <a href="#">AI Chat</a>
+
+            <a href="#">History</a>
+
+        </div>
+
+    </div>
+
+    <div class="footer-bottom">
+
+        © 2026 Agriculture AI Agent. All Rights Reserved.
+
+        <br>
+
+        Developed using HTML, CSS, JavaScript & FastAPI.
+
+    </div>
+
+</footer>
+
+</body>
+</html>
